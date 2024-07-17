@@ -4,20 +4,24 @@ import contactsData from "../Assets/contacts.json";
 import conversationsData from "../Assets/conversations.json";
 import ConversationItem from "./ConversationItem";
 import { Link } from "react-router-dom";
+import ContactModal from "./ContactModal";
 
 const Sidebar = ({ SelectedConvo }) => {
   const [conversations, setConversations] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { setSelectedConversation, selectedConversation } = SelectedConvo;
 
   useEffect(() => {
     // Load initial data
     setConversations(conversationsData);
   }, []);
+
   useEffect(() => {
     const filteredConvos = search(conversationsData, searchText);
     setConversations(filteredConvos);
   }, [searchText]);
+
   const search = (conversations, seachText) => {
     const lowerCaseText = seachText.toLowerCase();
     return conversations
@@ -35,6 +39,23 @@ const Sidebar = ({ SelectedConvo }) => {
 
   const handleConversationClick = (conversation) => {
     setSelectedConversation(conversation);
+  };
+
+  const handleCreateConversation = (contact) => {
+    const existingConversation = conversations.find(conv => conv.contactId === contact.id);
+    // c÷onsole.log(existingConversation)
+    if (existingConversation) {
+        // console.log("setSelectedConvo")
+      setSelectedConversation(existingConversation);
+    } else {
+      const newConversation = {
+        contactId: contact.id,
+        messages: []
+      };
+      setConversations([...conversations, newConversation]);
+      setSelectedConversation(newConversation);
+    }
+    setIsModalOpen(false);
   };
 
   return (
@@ -62,6 +83,14 @@ const Sidebar = ({ SelectedConvo }) => {
           </Link>
         ))}
       </div>
+      <button className="create-conversation-button" onClick={() => setIsModalOpen(true)}>+</button>
+      {isModalOpen && (
+        <ContactModal
+          contacts={contactsData}
+          onClose={() => setIsModalOpen(false)}
+          onSelectContact={handleCreateConversation}
+        />
+      )}
     </div>
   );
 };
