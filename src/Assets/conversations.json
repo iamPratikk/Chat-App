@@ -1,0 +1,75 @@
+[
+    {
+      "contactId": 1,
+      "messages": [
+        {
+          "id": 1,
+          "sender": "user",
+          "text": "Hey Alice, how are you?",
+          "timestamp": "2024-07-15T10:00:00Z"
+        },
+        {
+          "id": 2,
+          "sender": "Alice Johnson",
+          "text": "Hi! I'm good, thanks. How about you?",
+          "timestamp": "2024-07-15T10:05:00Z"
+        }
+      ]
+    },
+    {
+      "contactId": 2,
+      "messages": [
+        {
+          "id": 1,
+          "sender": "user",
+          "text": "Hello Bob, are you available for a meeting today?",
+          "timestamp": "2024-07-15T09:00:00Z"
+        },
+        {
+          "id": 2,
+          "sender": "Bob Smith",
+          "text": "Yes, I am. What time works for you?",
+          "timestamp": "2024-07-15T09:15:00Z"
+        }
+      ]
+    },
+    {
+      "contactId": 3,
+      "messages": []
+    },
+    {
+      "contactId": 4,
+      "messages": [
+        {
+          "id": 1,
+          "sender": "user",
+          "text": "Hi Diana, long time no see!",
+          "timestamp": "2024-07-14T08:00:00Z"
+        },
+        {
+          "id": 2,
+          "sender": "Diana Prince",
+          "text": "Indeed! How have you been?",
+          "timestamp": "2024-07-14T08:10:00Z"
+        }
+      ]
+    },
+    {
+      "contactId": 5,
+      "messages": [
+        {
+          "id": 1,
+          "sender": "user",
+          "text": "Hey Ethan, any updates on the project?",
+          "timestamp": "2024-07-13T11:00:00Z"
+        },
+        {
+          "id": 2,
+          "sender": "Ethan Hunt",
+          "text": "Yes, I just sent you an email with the details.",
+          "timestamp": "2024-07-13T11:05:00Z"
+        }
+      ]
+    }
+  ]
+  

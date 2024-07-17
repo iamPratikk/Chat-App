@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Sidebar from './components/Sidebar';
+import ChatWindow from './components/ChatWindow';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [selectedConversation, setSelectedConversation] = useState(null);
+  // console.log(selectedConversation)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app">
+        <Sidebar SelectedConvo={{selectedConversation,setSelectedConversation}} />
+        <Routes>
+          <Route path="/chat/:contactId" element={<ChatWindow selectedConversation={selectedConversation} />} />
+          <Route path="/" element={<div className="welcome-message">Select a conversation to start chatting</div>} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
